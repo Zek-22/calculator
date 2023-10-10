@@ -8,40 +8,41 @@
 </head>
 <body>
     <main>
-        <div id="screen">0</div>
+        <input id="result" type="text" dir="rtl" maxlength="21" readonly></input>
 
         <div id="keyboard">
-            <button class="key">%</button>
-            <button class="key">CE</button>
-            <button class="key">C</button>
-            <button class="key"><---</button>
+            <button class="key" id="percentage">%</button>
+            <button class="key" id="ce">CE</button>
+            <button class="key" id="c">C</button>
+            <button class="key" id="delete"><img src="img/delete.svg" alt="delete"></button>
 
             <button class="key">?</button>
-            <button class="key">x²</button>
-            <button class="key">√x</button>
-            <button class="key">/</button>
+            <button class="key" id="pow">x²</button>
+            <button class="key" id="sqrt">√x</button>
+            <button class="key" id="divide" value="/">/</button>
 
-            <button class="key">7</button>
-            <button class="key">8</button>
-            <button class="key">9</button>
-            <button class="key">x</button>
+            <button class="key" id="seven" value="7">7</button>
+            <button class="key" id="eight" value="8">8</button>
+            <button class="key" id="nine" value="9">9</button>
+            <button class="key" id="multiply" value="*">x</button>
 
-            <button class="key">4</button>
-            <button class="key">5</button>
-            <button class="key">6</button>
-            <button class="key">-</button>
+            <button class="key" id="four" value="4">4</button>
+            <button class="key" id="five" value="5">5</button>
+            <button class="key" id="six" value="6">6</button>
+            <button class="key" id="minus" value="-">-</button>
 
-            <button class="key">1</button>
-            <button class="key">2</button>
-            <button class="key">3</button>
-            <button class="key">+</button>
+            <button class="key" id="one" value="1">1</button>
+            <button class="key" id="two" value="2">2</button>
+            <button class="key" id="three" value="3">3</button>
+            <button class="key" id="plus" value="+">+</button>
 
-            <button class="key">+/-</button>
-            <button class="key">0</button>
-            <button class="key">.</button>
-            <button class="key">=</button>
+            <button class="key" id="swap">+/-</button>
+            <button class="key" id="zero" value="0">0</button>
+            <button class="key" id="dot" value=".">.</button>
+            <button class="key" id="equals">=</button>
 
         </div>
     </main>
 </body>
+<script src="script.js"></script>
 </html>
