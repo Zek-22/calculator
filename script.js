@@ -27,7 +27,8 @@ let pow3 = document.getElementById('pow3');
 let history = document.getElementById('history');
 let result = document.getElementById('result');
 
-const buttons = [zero, one, two, three, four, five, six, seven, eight, nine, percentage];
+const numbers = [zero, one, two, three, four, five, six, seven, eight, nine];
+const basicFunctions = [plus,minus,multiply,divide,percentage];
 
 function calculate(number1, number2) {
     let historyValue = `${history.value}`;
@@ -35,7 +36,7 @@ function calculate(number1, number2) {
     let minus = ' -';
     let multiply = ' *';
     let divide = ' /';
-    let sqrt = ' %';
+    let percentage = ' %';
     if (history.value != '' && result.value != null) {
         if (historyValue.includes(plus)) {
             result.value = parseFloat(number1) + parseFloat(number2);
@@ -45,7 +46,7 @@ function calculate(number1, number2) {
             result.value = parseFloat(number1) * parseFloat(number2);
         } else if (historyValue.includes(divide)) {
             result.value = parseFloat(number1) / parseFloat(number2);
-        } else if (historyValue.includes(sqrt)) {
+        } else if (historyValue.includes(percentage)) {
             result.value = (parseFloat(number1) * parseFloat(number2)) / 100;
         } else {
             history.value = result.value;
@@ -54,8 +55,19 @@ function calculate(number1, number2) {
     return result.value;
 }
 
-for (i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function (event) {
+for (let i = 0; i < basicFunctions.length; i++) {
+    basicFunctions[i].addEventListener('click', (event) => {
+        if (history.value != '' && result.value != '') {
+            history.value = `${calculate(history.value, result.value)} ${event.currentTarget.value} `;
+        } else if (result.value != '') {
+            history.value = `${result.value} ${event.currentTarget.value} `;
+        }
+        result.value = '';
+    });
+}
+
+for (i = 0; i < numbers.length; i++) {
+    numbers[i].addEventListener('click', function (event) {
         result.value += event.currentTarget.value;
     });
 }
@@ -98,51 +110,6 @@ sqrt.addEventListener('click', () => {
     history.value = `√ ${currentValue}`;
 });
 
-plus.addEventListener('click', () => {
-    if (history.value != '' && result.value != '') {
-        history.value = `${calculate(history.value, result.value)} + `;
-    } else if (result.value != '') {
-        history.value = `${result.value} + `;
-    }
-    result.value = '';
-});
-
-minus.addEventListener('click', () => {
-    if (history.value != '' && result.value != '') {
-        history.value = `${calculate(history.value, result.value)} - `;
-    } else if (result.value != '') {
-        history.value = `${result.value} - `;
-    }
-    result.value = '';
-});
-
-multiply.addEventListener('click', () => {
-    if (history.value != '' && result.value != '') {
-        history.value = `${calculate(history.value, result.value)} * `;
-    } else if (result.value != '') {
-        history.value = `${result.value} * `;
-    }
-    result.value = '';
-});
-
-divide.addEventListener('click', () => {
-    if (history.value != '' && result.value != '') {
-        history.value = `${calculate(history.value, result.value)} / `;
-    } else if (result.value != '') {
-        history.value = `${result.value} / `;
-    }
-    result.value = '';
-});
-
-percentage.addEventListener('click', () => {
-    if (history.value != '' && result.value != '') {
-        history.value = `${calculate(history.value, result.value)} % `;
-    } else if (result.value != '') {
-        history.value = `${result.value} % `;
-    }
-    result.value = '';
-});
-
 swap.addEventListener('click', () => {
     result.value = `${-result.value}`;
 });
@@ -161,7 +128,3 @@ equals.addEventListener('click', () => {
         history.value = result.value;
     }
 });
-
-ans.addEventListener("click", ()=> {
-
-})
